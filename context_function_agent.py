@@ -9,11 +9,6 @@ def multiply(a: float, b: float) -> float:
     return a * b
 
 async def main():
-    """
-    ReActAgent with tools and context - this should work!
-    """
-    print("=== ReActAgent with Tools and Context ===")
-    
     agent = FunctionAgent(
         tools=[multiply], 
         llm=Ollama(
