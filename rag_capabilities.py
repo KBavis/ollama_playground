@@ -24,7 +24,10 @@ documents = SimpleDirectoryReader("data").load_data()
 index = VectorStoreIndex.from_documents(
     documents
 )
-query_engine = index.as_query_engine()
+query_engine = index.as_query_engine(
+    response_mode="tree_summarize",  # combines multiple chunks into a longer answer
+    similarity_top_k=5               # retrieve more chunks for more context
+)
 
 
 async def search_documents(query: str) -> str:
